@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/15 17:42:34 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/16 12:14:11 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int check_get_line(int fd, char *buffer, char **line, char **memory)
 
 	i = 0;
 	printf("(1) Buffer is %s\n, memory is: %s\n", buffer, *memory); // why is memory empty?
-	buffer = ft_strjoin(*memory, buffer);
-	printf("After joining both: Buffer is %s\n", buffer);
+	buffer = ft_strjoin(*memory, buffer); //doublon ?
+	printf("After joining both: Buffer is: %s\n", buffer);
 	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
 	printf("buffer[i] when exiting loop is: %i, value of i is: %i\n", (int)buffer[i], i);
@@ -40,29 +40,24 @@ int check_get_line(int fd, char *buffer, char **line, char **memory)
 int get_next_line(int fd, char **line)
 {
 	char			*buffer;
-	static char		**memory = 0;
+	static char		**memory;
 	int				r;
 
 	*line = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // malloc de la taille de la ligne
-	*memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // au maximum, il y aura buffer_size + 1 dans memory car on ne lira jamais plus que buffer_size caractères
-	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	printf("Upon execution of the function, memory is: %s\n", *memory); // START HERE why is memory empty upon subsequent executions of the function? => tried to solve by having memory as char ** and replacing memory with *memory, now it segfaults
-	while ((r = read(fd, buffer, BUFFER_SIZE) != 0) && ft_strchr(buffer, '\n') == NULL) // Case if buffer is too short for line BUFFER = 20, doesn't get into the loop because buffer contains '\n' on first execution, so memory is still empty after the while
+	if (memory == NULL) // only malloc memory if memory is empty!
 	{
-		if (memory[0] == 0)
-		{
-			*memory = buffer;
-			printf("--\nThis is first execution\n");
-		}
-		else
-		{
-			*memory = ft_strjoin(*memory, buffer);
-		}
+		memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // au maximum, il y aura buffer_size + 1 dans memory car on ne lira jamais plus que buffer_size caractères
+		*memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	}
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	printf("On gnl call memory is: %s\n", *memory);
+	// mettre le read dans memory
+	while ((r = read(fd, buffer, BUFFER_SIZE) != 0) && ft_strchr(ft_strjoin(*memory, buffer), '\n') == NULL) // Case if buffer is too short for line BUFFER = 20, doesn't get into the loop because buffer contains '\n' on first execution, so memory is still empty after the while
+	{
+		*memory = ft_strjoin(*memory, buffer);
 	}
 	if (r == 0)
-		return (0); //besoin de finir buffer par un \0? => calloc le fait
-	//if (memory[0] == 0) //testing for memory[0] == 0 because calloc initialised memory to 0
-	//	memory = buffer;
+		return (0);
 	else
 		check_get_line(fd, buffer, line, memory);
 	return (1);
