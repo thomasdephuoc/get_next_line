@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/16 13:01:46 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/18 14:00:33 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,22 @@ int check_get_line(int fd, char *buffer, char **line, char **memory)
 	int i;
 
 	i = 0;
-	printf("(1) Buffer is: %s\nmemory is: %s\n", buffer, *memory); // why is memory empty?
-	buffer = ft_strjoin(*memory, buffer); //doublon ? => maybe joining in gnl while is enough
-	printf("After joining both: Buffer is: %s\n", buffer);
+	printf("(1) Buffer is: %s\nmemory is: %s\n", buffer, *memory);
+	buffer = ft_strjoin(*memory, buffer);
+	printf("(1) After joining both: Buffer is: %s\n", buffer);
 	while (buffer[i] != '\0' && buffer[i] != '\n')
 		i++;
-	printf("buffer[i] when exiting loop is: %i, value of i is: %i\n", (int)buffer[i], i);
+	printf("(1) buffer[i] when exiting loop is: %i, value of i is: %i\n", (int)buffer[i], i);
 	if (buffer[i] == '\n')
 	{
 		*line = ft_strsub(buffer, '\n');
-		*memory = ft_strjoin("", buffer + i + 1); // this works: we save in memory characters that were read after \n. We add + 1 to skip \n. Won't this destroy memory later?
+		*memory = ft_strjoin("", buffer + i + 1);
 	}
-	printf("After strjoin, Memory is: %s\n", *memory);
-	//else : si le buffer n'a pas suffi à atteindre la fin de la ligne, refaire un tour (exécuter get_next_line)
+	if (buffer[i] == '\0') // a else could do
+	{
+		*line = ft_strsub(buffer, '\n');
+	}
+	printf("(1) After strjoin, Memory is: %s\n", *memory);
 	return (fd); // returning fd to silence warning
 }
 
@@ -43,30 +46,37 @@ int get_next_line(int fd, char **line)
 	static char		**memory;
 	int				r;
 
-	*line = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // malloc de la taille de la ligne
+	r = 500; // if r is not initialised, it will be 0 so the if(r == 0) below will execute. Will it lead to pb that it's arbitrary?
+	*line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (memory == NULL) // only malloc memory if memory is empty!
+	if (memory == NULL)
 	{
-		memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // au maximum, il y aura buffer_size + 1 dans memory car on ne lira jamais plus que buffer_size caractères
-		*memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char*)); // au maximum, il y aura buffer_size + 1 dans memory car on ne lira jamais plus que buffer_size caractères
+		*memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // pb is HERE
+		printf("success hello\n");
 	}
-	printf("On gnl call memory is: %s\n", *memory);
-	// mettre le read dans memory
-	printf("memory + buffer is: %s\n", ft_strjoin(*memory, buffer));
-	while (ft_strchr(ft_strjoin(*memory, buffer), '\n') == NULL) // Case if buffer is too short for line BUFFER = 20, doesn't get into the loop because buffer contains '\n' on first execution, so memory is still empty after the while
-	// Pb if BUFFER = 20, even though there's already a '\n' in memory, we read first. How to tell it not to read if not necessary?
+	printf("(2) On gnl call memory is: %s\n", *memory);
+	printf("(2) memory + buffer is: %s\n", ft_strjoin(*memory, buffer));
+	while (ft_strchr(ft_strjoin(*memory, buffer), '\n') == NULL) // Should the loop also look for a '\0'?
 	{
-		printf("Loop executes\n");
+		printf("(2) Loop executes\n");
 		*memory = ft_strjoin(*memory, buffer);
-		if (((r = read(fd, buffer, BUFFER_SIZE)) == 0)) // START HERE why does r == 0 so early?
+		if (((r = read(fd, buffer, BUFFER_SIZE)) == 0))
+		{
+			buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); //reinitialise buffer to 0 to avoid problems for last instance
 			break ;
+		}
+		printf("(2) In loop, r is: %i\n", r);
 	}
+	printf("(2) After loop, r is: %i\n", r);
+	printf("(2) After while, Buffer is: %s\n", buffer);
+	check_get_line(fd, buffer, line, memory);
 	if (r == 0)
 	{
-		printf("gnl stops\n");
+
+		printf("(2) gnl stops\n");
 		return (0);
 	}
 	else
-		check_get_line(fd, buffer, line, memory);
-	return (1);
+		return (1);
 }
