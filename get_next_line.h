@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:53 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/16 11:23:37 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/18 15:30:11 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void	free_memory(int i, char *buffer, char **memory);
 int		get_next_line(int fd, char **line);
-int 	check_get_line(int fd, char *buffer, char **line, char **memory);
+int		check_get_line(int fd, char *buffer, char **line, char **memory);
 
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
