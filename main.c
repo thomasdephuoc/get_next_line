@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:43:34 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/18 15:32:07 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:03:05 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int main(void)
 {
 	int fd;
-	char *line;
+	char *line; // initialise to silence warning?
 	int r;
 
 	r = 0;
@@ -28,6 +28,6 @@ int main(void)
 	}
 	printf("(main) (r:%i) Line is: %s\n--\n", r, line);
 	free(line);
-	//system("leaks a.out");
+	system("leaks a.out");
 	close (fd);
 }

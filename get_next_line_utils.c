@@ -6,26 +6,11 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:55 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/15 17:18:47 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/20 16:55:13 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-/*
-** Dynamically allocates count elements of size size, null-terminating the output
-*/
-void	*ft_calloc(size_t count, size_t size)
-{
-	void *ptr;
-	size_t i;
-
-	i = 0;
-	if (!(ptr = malloc(count * size)))
-		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
-}
 
 // if need for more functions, put ft_bzero in calloc
 void	ft_bzero(void *s, size_t n)
@@ -81,7 +66,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
 	i = 0;
-	if (!(ptr = malloc(sizeof(char) * (len_s1 + len_s2 + 1))))
+	if (!(ptr = malloc(sizeof(char) * (len_s1 + len_s2 + 1)))) // works if I do +10
 		return (NULL);
 	while (i < len_s1)
 	{

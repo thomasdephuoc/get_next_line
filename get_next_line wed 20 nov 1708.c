@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line copy.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/20 17:10:13 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/20 17:08:26 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int get_next_line(int fd, char **line)
 	static char		**memory; // instanciation ici autorisée dans le cas des static, nécessaire ? => non car calloc initialise
 	int				r;
 
-	if (fd < 0 || line == NULL || (ft_memset(buffer, (char)0, BUFFER_SIZE + 1)!= buffer))
+	if (fd < 0 || line == NULL || ft_memset(buffer, (char)0, BUFFER_SIZE + 1)!= buffer)
 		return (-1);
 	r = 500; // if r is not initialised, it will be 0 so the if(r == 0) below will execute. Will it lead to pb that it's arbitrary?
 	*line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
@@ -96,7 +96,10 @@ int get_next_line(int fd, char **line)
 	{
 		//printf("(2) Loop executes\n");
 		if (((r = read(fd, buffer, BUFFER_SIZE)) == 0))
+		{
+			//buffer[0] = '\0'; deleting this as seems to have no impact
 			break;
+		}
 		tmp = ft_strjoin(*memory, buffer);
 		free(*memory);
 		*memory = tmp;

@@ -1,0 +1,55 @@
+Process:         a.out [7327]
+Path:            /Volumes/VOLUME/*/a.out
+Load Address:    0x103eef000
+Identifier:      a.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [865]
+
+Date/Time:       2019-11-20 17:10:31.700 +0100
+Launch Time:     2019-11-20 17:10:31.344 +0100
+OS Version:      Mac OS X 10.14.5 (18F132)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 10.3 (10G8)
+----
+
+leaks Report Version: 4.0
+Process 7327: 175 nodes malloced for 30 KB
+Process 7327: 11 leaks for 528 total leaked bytes.
+
+    11 (528 bytes) << TOTAL >>
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02ae0 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02b10 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02b50 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02b80 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02bb0 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02d20 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02d50 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02d80 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02db0 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02de0 [48]
+      1 (48 bytes) ROOT LEAK: 0x7fab92c02e10 [48]
+
+(main) (r:1) Line is: First line
+--
+(main) (r:1) Line is: Second line
+--
+(main) (r:1) Line is: Third line
+--
+(main) (r:1) Line is: Fourth line
+--
+(main) (r:1) Line is: Fifth line
+--
+(main) (r:1) Line is: Sixth line
+--
+(main) (r:1) Line is: Seventh line
+--
+(main) (r:1) Line is: Eighth line
+--
+(main) (r:1) Line is: Ninth line
+--
+(main) (r:1) Line is: Tenth line
+--
+(main) (r:0) Line is: Last line
+--

@@ -1,0 +1,23 @@
+leaks[98485]: leaks cannot find any existing process you have access to which has a name like 'a.out'; try running with `sudo`.
+(main) (r:1) Line is: First line
+--
+(main) (r:1) Line is: Second line
+--
+(main) (r:1) Line is: Third line
+--
+(main) (r:1) Line is: Fourth line
+--
+(main) (r:1) Line is: Fifth line
+--
+(main) (r:1) Line is: Sixth line
+--
+(main) (r:1) Line is: Seventh line
+--
+(main) (r:1) Line is: Eighth line
+--
+(main) (r:1) Line is: Ninth line
+--
+(main) (r:1) Line is: Tenth line
+--
+(main) (r:0) Line is: Last line
+--
