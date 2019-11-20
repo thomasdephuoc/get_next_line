@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/20 17:10:13 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/20 18:30:42 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,15 +73,15 @@ int check_get_line(int fd, char **line, char **memory)
 
 int get_next_line(int fd, char **line)
 {
-	char			buffer[BUFFER_SIZE + 1];
+	char			bu[BUFFER_SIZE + 1];
 	char			*tmp;
 	static char		**memory; // instanciation ici autorisée dans le cas des static, nécessaire ? => non car calloc initialise
 	int				r;
 
-	if (fd < 0 || line == NULL || (ft_memset(buffer, (char)0, BUFFER_SIZE + 1)!= buffer))
+	if (fd < 0 || line == NULL || (ft_memset(bu, (char)0, BUFFER_SIZE + 1)!= bu))
 		return (-1);
 	r = 500; // if r is not initialised, it will be 0 so the if(r == 0) below will execute. Will it lead to pb that it's arbitrary?
-	*line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	//*line = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	if (memory == NULL)
 	{
 		memory = ft_calloc(BUFFER_SIZE + 1, sizeof(char*));
@@ -89,15 +89,12 @@ int get_next_line(int fd, char **line)
 	}
 	//printf("(2) On gnl call memory is: %s\n", *memory);
 	//printf("(2) memory + buffer is: %s\n", ft_strjoin(*memory, buffer));
-	tmp = ft_strjoin(*memory, buffer);
-	free(*memory);
-	*memory = tmp;
 	while (ft_strchr(*memory, '\n') == NULL) // Should the loop also look for a '\0'?
 	{
 		//printf("(2) Loop executes\n");
-		if (((r = read(fd, buffer, BUFFER_SIZE)) == 0))
+		if (((r = read(fd, bu, BUFFER_SIZE)) == 0))
 			break;
-		tmp = ft_strjoin(*memory, buffer);
+		tmp = ft_strjoin(*memory, bu);
 		free(*memory);
 		*memory = tmp;
 		//printf("(2) In loop, r is: %i\n", r);
