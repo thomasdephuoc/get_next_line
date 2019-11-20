@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:55 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/20 16:55:13 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/20 19:07:45 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char*	ft_strsub(char *str, char c)
 	int		j;
 	char	*return_str;
 
+	if (str == NULL || c == 0)
+		return (NULL);
 	i = 0;
 	j = 0;
 	while (str[i] != '\0' && str[i] != c)
@@ -104,6 +106,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	int i;
 
+	if (s == NULL || c == 0)
+		return (NULL);
 	i = 0;
 	while (s[i] != '\0')
 	{

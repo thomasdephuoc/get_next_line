@@ -1,13 +1,13 @@
-Process:         a.out [10820]
+Process:         a.out [14057]
 Path:            /Volumes/VOLUME/*/a.out
-Load Address:    0x106b37000
+Load Address:    0x10dd45000
 Identifier:      a.out
 Version:         ???
 Code Type:       X86-64
 Parent Process:  zsh [865]
 
-Date/Time:       2019-11-20 18:30:43.894 +0100
-Launch Time:     2019-11-20 18:30:43.545 +0100
+Date/Time:       2019-11-20 19:28:08.967 +0100
+Launch Time:     2019-11-20 19:28:08.604 +0100
 OS Version:      Mac OS X 10.14.5 (18F132)
 Report Version:  7
 Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
@@ -15,8 +15,8 @@ Analysis Tool Version:  Xcode 10.3 (10G8)
 ----
 
 leaks Report Version: 4.0
-Process 10820: 164 nodes malloced for 110 KB
-Process 10820: 0 leaks for 0 total leaked bytes.
+Process 14057: 164 nodes malloced for 70 KB
+Process 14057: 0 leaks for 0 total leaked bytes.
 
 (main) (r:1) Line is: First line
 --
