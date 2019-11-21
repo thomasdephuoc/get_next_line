@@ -6,25 +6,24 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:53 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/20 16:55:01 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/21 12:07:34 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
 
-void	free_memory(int i, char *buffer, char **memory);
 int		get_next_line(int fd, char **line);
-int		check_get_line(int fd, char **line, char **memory);
+int		check_get_line(char **line, char **mem);
 void	*ft_memset(void *b, int c, size_t len);
-void *ft_calloc(size_t count, size_t size);
+void	*ft_calloc(size_t count, size_t size);
 
 void	ft_bzero(void *s, size_t n);
 char	*ft_strsub(char *str, char c);

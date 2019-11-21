@@ -1,0 +1,238 @@
+Norme: ./a.out
+Warning: Not a valid file
+Norme: ./a.out.dSYM/Contents/Info.plist
+Warning: Not a valid file
+Norme: ./a.out.dSYM/Contents/Resources/DWARF/a.out
+Warning: Not a valid file
+Norme: ./gnl
+Warning: Not a valid file
+Norme: ./gnl.dSYM/Contents/Info.plist
+Warning: Not a valid file
+Norme: ./gnl.dSYM/Contents/Resources/DWARF/gnl
+Warning: Not a valid file
+Norme: ./gnlkiller/expected
+Warning: Not a valid file
+Norme: ./gnlkiller/get_next_line
+Warning: Not a valid file
+Norme: ./gnlkiller/output
+Warning: Not a valid file
+Norme: ./gnlkiller/README.md
+Warning: Not a valid file
+Norme: ./gnlkiller/run.sh
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/63_line
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/63_line_nl
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/64_line
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/64_line_nl
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/65_line
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/65_line_nl
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/baudelaire.txt
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/empty
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/empty_one
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/expected_result
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/large_file.txt
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/lorem_ipsum
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/many_lines
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/Mr. Justice Maxell by Edgar Wallace.txt
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/multi_in_one
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/one_big_fat_line.txt
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/over_buffer
+Warning: Not a valid file
+Norme: ./gnlkiller/tests/simple
+Warning: Not a valid file
+Norme: ./normi.txt
+Warning: Not a valid file
+Norme: ./output_bug.txt
+Warning: Not a valid file
+Norme: ./README.md
+Warning: Not a valid file
+Norme: ./test.txt
+Warning: Not a valid file
+Norme: ./valgrind-out.txt
+Warning: Not a valid file
+Norme: ./valgrind-out2.txt
+Warning: Not a valid file
+Norme: ./valgrind-output_complete.txt
+Warning: Not a valid file
+Norme: ./valgrind-output_medium.txt
+Warning: Not a valid file
+Norme: ./valgrind_output.txt
+Warning: Not a valid file
+Norme: ./valgrind_output_2.txt
+Warning: Not a valid file
+Norme: ./valgrind_output_2bis.txt
+Warning: Not a valid file
+Norme: ./valgrind_output_3.txt
+Warning: Not a valid file
+Norme: ./valgrind_output_basic.txt
+Warning: Not a valid file
+Norme: ./brouillons.c
+Error: 42 header not at top of the file
+Error (line 4): line has 125 characters
+Error (line 27): multiple empty lines
+Error (line 51): line has 130 characters
+Norme: ./get_next_line wed 20 nov 1434.c
+Error: bad filename : get_next_line wed 20 nov 1434.c
+Error (line 15): comment not well formatted
+Error (line 28): Space before function name
+Error (line 28): bad spacing before check_get_line
+Error (line 28): bad spacing after check_get_line
+Error (line 33): C++ comment
+Error (line 35): C++ comment
+Error (line 38): bad indentation
+Error (line 38): C++ comment
+Error (line 38): line has 96 characters
+Error (line 44): missing newline after if
+Error (line 44): C++ comment
+Error (line 48): C++ comment
+Error (line 49): C++ comment
+Error (line 52): multiple empty lines
+Error (line 53): Space before function name
+Error (line 53): function get_next_line has 48 lines
+Error (line 53): declarations in get_next_line must be at the top of the function
+Error (line 53): bad spacing before get_next_line
+Error (line 56): C++ comment
+Error (line 58): C++ comment
+Error (line 58): line has 127 characters
+Error (line 61): missing newline after if
+Error (line 61): C++ comment
+Error (line 63): C++ comment
+Error (line 63): line has 132 characters
+Error (line 66): C++ comment
+Error (line 69): C++ comment
+Error (line 69): line has 167 characters
+Error (line 70): C++ comment
+Error (line 71): C++ comment
+Error (line 73): C++ comment
+Error (line 74): C++ comment
+Error (line 75): missing newline after while
+Error (line 75): C++ comment
+Error (line 75): line has 139 characters
+Error (line 77): bad indentation
+Error (line 77): C++ comment
+Error (line 78): C++ comment
+Error (line 83): C++ comment
+Error (line 83): line has 126 characters
+Error (line 84): C++ comment
+Error (line 85, col 3): missing space after break
+Error (line 87): C++ comment
+Error (line 89): C++ comment
+Error (line 90): C++ comment
+Error (line 92): C++ comment
+Error (line 95): Empty line
+Error (line 96): bad indentation
+Error (line 96): C++ comment
+Norme: ./get_next_line monday 1500.c
+Error: bad filename : get_next_line monday 1500.c
+Error (line 18): Space before function name
+Error (line 18): bad spacing before check_get_line
+Error (line 18): bad spacing after check_get_line
+Error (line 28): line has 94 characters
+Error (line 34): missing newline after if
+Error (line 34): C++ comment
+Error (line 39): C++ comment
+Error (line 42): multiple empty lines
+Error (line 43): Space before function name
+Error (line 43): function get_next_line has 41 lines
+Error (line 43): bad spacing before get_next_line
+Error (line 49): missing newline after if
+Error (line 49): C++ comment
+Error (line 51): C++ comment
+Error (line 51): line has 132 characters
+Error (line 56): C++ comment
+Error (line 56): line has 167 characters
+Error (line 57): C++ comment
+Error (line 62): missing newline after while
+Error (line 62): C++ comment
+Error (line 62): line has 106 characters
+Error (line 68): C++ comment
+Error (line 68): line has 126 characters
+Error (line 78): Empty line
+Norme: ./get_next_line.h
+Norme: ./get_next_line.c
+Error (line 70): function get_next_line has 28 lines
+Norme: ./main.c
+Error (line 15): declarations in main are bad aligned
+Error (line 15): Space before function name
+Error (line 18): C++ comment
+Error (line 26, col 42): bad character after ,
+Error (line 26, col 44): bad character after ,
+Error (line 32, col 7): Spacing after call to close
+Norme: ./get_next_line wed 20 nov 1708.c
+Error: global scope bad aligned
+Error: bad filename : get_next_line wed 20 nov 1708.c
+Error: 42 header not at top of the file
+Error (line 16): line has 82 characters
+Error (line 18): declarations in ft_calloc are bad aligned
+Error (line 18): Space before function name
+Error (line 18): bad spacing before ft_calloc
+Error (line 30): declarations in ft_memset are bad aligned
+Error (line 45): Space before function name
+Error (line 45): bad spacing after check_get_line
+Error (line 51): C++ comment
+Error (line 52): C++ comment
+Error (line 53): C++ comment
+Error (line 56): bad indentation
+Error (line 56): C++ comment
+Error (line 56): line has 102 characters
+Error (line 60): C++ comment
+Error (line 65): missing newline after if
+Error (line 65): C++ comment
+Error (line 69): C++ comment
+Error (line 70): C++ comment
+Error (line 73): multiple empty lines
+Error (line 74): Space before function name
+Error (line 74): function get_next_line has 41 lines
+Error (line 74): bad spacing before get_next_line
+Error (line 78): C++ comment
+Error (line 78): line has 127 characters
+Error (line 81): line has 88 characters
+Error (line 81, col 74): missing space around !=
+Error (line 83): C++ comment
+Error (line 83): line has 132 characters
+Error (line 90): C++ comment
+Error (line 91): C++ comment
+Error (line 95): missing newline after while
+Error (line 95): C++ comment
+Error (line 95): line has 86 characters
+Error (line 97): bad indentation
+Error (line 97): C++ comment
+Error (line 100): bad indentation
+Error (line 100): C++ comment
+Error (line 101, col 3): missing space after break
+Error (line 106): C++ comment
+Error (line 108): C++ comment
+Error (line 109): C++ comment
+Error (line 110): C++ comment
+Norme: ./gnlkiller/test.c
+Error: global scope bad aligned
+Error (line 19): missing void in function sigcatch
+Error (line 25): function test_fd has 31 lines
+Error (line 36): Empty line
+Error (line 45): Empty line
+Error (line 46, col 1): no empty line before block
+Error (line 47): Empty line
+Error (line 52): Empty line
+Error (line 61): function main has 37 lines
+Error (line 61): declarations in main must be at the top of the function
+Error (line 64, col 8): buffer is instanciated during declaration
+Error (line 65): multiple declarations
+Error (line 83): C++ comment
+Error (line 84): C++ comment
+Norme: ./get_next_line_utils.c
