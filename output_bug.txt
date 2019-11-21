@@ -1,42 +1,24 @@
-Process:         a.out [6323]
-Path:            /Volumes/VOLUME/*/a.out
-Load Address:    0x108f69000
-Identifier:      a.out
-Version:         ???
-Code Type:       X86-64
-Parent Process:  zsh [885]
-
-Date/Time:       2019-11-21 12:18:00.675 +0100
-Launch Time:     2019-11-21 12:18:00.308 +0100
-OS Version:      Mac OS X 10.14.5 (18F132)
-Report Version:  7
-Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
-Analysis Tool Version:  Xcode 10.3 (10G8)
-----
-
-leaks Report Version: 4.0
-Process 6323: 162 nodes malloced for 30 KB
-Process 6323: 0 leaks for 0 total leaked bytes.
-
-(main) (r:1) Line is: First line
---
-(main) (r:1) Line is: Second line
---
-(main) (r:1) Line is: Third line
---
-(main) (r:1) Line is: Fourth line
---
-(main) (r:1) Line is: Fifth line
---
-(main) (r:1) Line is: Sixth line
---
-(main) (r:1) Line is: Seventh line
---
-(main) (r:1) Line is: Eighth line
---
-(main) (r:1) Line is: Ninth line
---
-(main) (r:1) Line is: Tenth line
---
-(main) (r:0) Line is: Last line
---
+Process:         a.out [10560]$
+Path:            /Volumes/VOLUME/*/a.out$
+Load Address:    0x10e88c000$
+Identifier:      a.out$
+Version:         ???$
+Code Type:       X86-64$
+Parent Process:  zsh [885]$
+$
+Date/Time:       2019-11-21 13:23:01.832 +0100$
+Launch Time:     2019-11-21 13:23:01.448 +0100$
+OS Version:      Mac OS X 10.14.5 (18F132)$
+Report Version:  7$
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks$
+Analysis Tool Version:  Xcode 10.3 (10G8)$
+----$
+$
+leaks Report Version: 4.0$
+Process 10560: 162 nodes malloced for 30 KB$
+Process 10560: 0 leaks for 0 total leaked bytes.$
+$
+(main) (r:1) Line is: First line$
+--$
+(main) (r:0) Line is: Second line$
+--$

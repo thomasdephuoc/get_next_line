@@ -1,0 +1,2 @@
+baudelaire : ligne 48 "PRIÈRE", car unicode ?
+Mr Justice Maxell: unicode ?
