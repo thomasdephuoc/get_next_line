@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/21 12:08:06 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/21 12:17:56 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int		check_get_line(char **line, char **mem)
 	{
 		*line = ft_strsub(mem[0], '\n');
 		tmp = ft_strjoin("", mem[0] + i + 1);
-		free(*mem);
-		*mem = tmp;
+		free(mem[0]);
+		mem[0] = tmp;
 	}
 	else if (mem[0][i] == '\0')
 	{
@@ -71,26 +71,25 @@ int		get_next_line(int fd, char **line)
 {
 	char			bu[BUFFER_SIZE + 1];
 	char			*tmp;
-	static char		**mem;
+	static char		*mem;
 	int				r;
 
 	if (fd < 0 || line == NULL || (ft_memset(bu, 0, BUFFER_SIZE + 1) != bu))
 		return (-1);
 	r = 500;
-	if (mem == NULL)// faire malloc ici permet de le proteger
+	if (mem == NULL)
+		if (!(mem = ft_calloc(BUFFER_SIZE + 1, sizeof(char))))
+			return (-1);
+	while (ft_strchr(mem, '\n') == NULL
+	&& ((r = read(fd, bu, BUFFER_SIZE)) != 0))
 	{
-		mem = ft_calloc(1, sizeof(char*));
-		*mem = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); // a proteger
+		tmp = ft_strjoin(mem, bu);
+		free(mem);
+		mem = tmp;
 	}
-	while (ft_strchr(*mem, '\n') == NULL && ((r = read(fd, bu, BUFFER_SIZE)) != 0))
-	{
-		tmp = ft_strjoin(*mem, bu);
-		free(*mem);
-		*mem = tmp;
-	}
-	if (r == 0 && check_get_line(line, mem) == 1)
+	if (r == 0 && check_get_line(line, &mem) == 1)
 		return (0);
-	else if (r > 0 && check_get_line(line, mem) == 1)
+	else if (r > 0 && check_get_line(line, &mem) == 1)
 		return (1);
 	return (-1);
 }
