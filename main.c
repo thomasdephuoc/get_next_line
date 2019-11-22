@@ -6,16 +6,17 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/14 12:43:34 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/20 17:03:05 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:08:38 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line.h"
 
 int main(void)
 {
 	int fd;
-	char *line; // initialise to silence warning?
+	char *line = NULL;
 	int r;
 
 	r = 0;
@@ -31,3 +32,30 @@ int main(void)
 	system("leaks a.out");
 	close (fd);
 }
+
+/*
+#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
+int main(void)
+{
+	int fd;
+	char **line;
+	int ret;
+	fd = open("test", O_RDONLY);
+	fd = 0;
+	if (!(line = malloc(sizeof(char *))))
+		return (0);
+	ret = 1;
+	while ((ret = get_next_line(fd, line)) == 1)
+	{
+		printf("%d|%s|\n", ret, *line);
+		free(*line);
+	}
+	printf("%d|%s|\n", ret, *line);
+	free(*line);
+	free(line);
+	close(fd);
+	system("leaks a.out");
+}
+*/

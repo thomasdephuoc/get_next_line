@@ -1,2 +1,5 @@
-First line
-Second line
+hello
+world
+
+was an empty
+end is near

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line copy Loic edits.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 15:15:21 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 15:14:49 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		check_get_line(char **line, char **mem)
 	if (mem[0][i] == '\n')
 	{
 		*line = ft_strsub(mem[0], '\n');
+		//*line = ft_substr(mem[0], 0, i);
 		tmp = ft_strjoin("", mem[0] + i + 1);
 		free(mem[0]);
 		mem[0] = tmp;
@@ -63,30 +64,27 @@ int		check_get_line(char **line, char **mem)
 	else if (mem[0][i] == '\0')
 	{
 		*line = ft_strsub(mem[0], '\n');
+		//*line = ft_substr(mem[0], 0, i);
 	}
 	return (1);
 }
 
-int		get_next_line(int fd, char **line)
+int		get_next_line(int fd, char **line) // delete the memset
 {
 	char			bu[BUFFER_SIZE + 1];
 	char			*tmp;
 	static char		*mem;
 	int				r;
+	int				size;
 
-	r = 1;
-	if (fd < 0 || line == NULL || (ft_memset(bu, 0, BUFFER_SIZE + 1) != bu)
-	|| BUFFER_SIZE < 0)
+	if (fd < 0 || line == NULL || (size = BUFFER_SIZE < 0))
 		return (-1);
 	if (mem == NULL)
 		if (!(mem = ft_calloc(BUFFER_SIZE + 1, sizeof(char))))
 			return (-1);
-	while (ft_strchr(mem, '\n') == NULL
-	&& (ft_memset(bu, 0, BUFFER_SIZE + 1) == bu)
-	&& ((r = read(fd, bu, BUFFER_SIZE)) != 0))
+	while (ft_strchr(mem, '\n') == NULL && ((r = read(fd, bu, BUFFER_SIZE)) != 0))
 	{
-		if (r < 0)
-			return (-1);
+		bu[r] = '\0';
 		if (!(tmp = ft_strjoin(mem, bu)))
 			return (-1);
 		free(mem);

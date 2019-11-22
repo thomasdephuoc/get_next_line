@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:55 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 14:21:18 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:19:11 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_bzero(void *s, size_t n)
 
 /*
 ** To copy everything up to first instance of c
-*/
+
 
 char	*ft_strsub(char *str, char c)
 {
@@ -53,9 +53,9 @@ char	*ft_strsub(char *str, char c)
 	return (return_str);
 }
 
-/*
-**	Puts s2 after s1 in s1
 
+**	Puts s2 after s1 in s1
+*/
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
@@ -77,8 +77,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ptr[i] = '\0';
 	return (ptr);
 }
-
-*/
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

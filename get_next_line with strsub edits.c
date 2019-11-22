@@ -6,11 +6,44 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 15:15:21 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 13:22:37 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+size_t ft_strlcpy(char *restrict dst, const char *restrict src, size_t dstsize)
+{
+	size_t i;
+
+	i = 0;
+	if (dst == NULL || src == NULL)
+		return (0);
+	if (dstsize != 0)
+	{
+		while (src[i] != '\0' && i < dstsize - 1)
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (ft_strlen(src));
+}
+
+char	*ft_strdup(const char *s1)
+{
+	size_t	length;
+	char	*result;
+	size_t	i;
+
+	length = ft_strlen(s1);
+	if (!(result = malloc(sizeof(char) * (length + 1))))
+		return (NULL);
+	i = 0;
+	ft_strlcpy(result, s1, sizeof(char) * (length + 1));
+	return (result);
+}
 
 /*
 ** Dynamically allocates count elements of size size, null-terminates the output
@@ -55,14 +88,16 @@ int		check_get_line(char **line, char **mem)
 		i++;
 	if (mem[0][i] == '\n')
 	{
-		*line = ft_strsub(mem[0], '\n');
+		//*line = ft_strsub(mem[0], '\n');
+		*line = ft_substr(mem[0], 0, i);
 		tmp = ft_strjoin("", mem[0] + i + 1);
 		free(mem[0]);
 		mem[0] = tmp;
 	}
 	else if (mem[0][i] == '\0')
 	{
-		*line = ft_strsub(mem[0], '\n');
+		//*line = ft_strsub(mem[0], '\n');
+		*line = ft_substr(mem[0], 0, i);
 	}
 	return (1);
 }
@@ -74,7 +109,6 @@ int		get_next_line(int fd, char **line)
 	static char		*mem;
 	int				r;
 
-	r = 1;
 	if (fd < 0 || line == NULL || (ft_memset(bu, 0, BUFFER_SIZE + 1) != bu)
 	|| BUFFER_SIZE < 0)
 		return (-1);
@@ -85,8 +119,6 @@ int		get_next_line(int fd, char **line)
 	&& (ft_memset(bu, 0, BUFFER_SIZE + 1) == bu)
 	&& ((r = read(fd, bu, BUFFER_SIZE)) != 0))
 	{
-		if (r < 0)
-			return (-1);
 		if (!(tmp = ft_strjoin(mem, bu)))
 			return (-1);
 		free(mem);
