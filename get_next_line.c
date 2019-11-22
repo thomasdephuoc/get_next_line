@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 17:06:46 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:27:46 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,31 +67,40 @@ int		check_get_line(char **line, char **mem)
 	return (1);
 }
 
+int		while_gnl(int fd, char **mem, int buf_size, int *r)
+{
+	char	bu[buf_size + 1];
+	char	*tmp;
+
+	while (ft_strchr(mem[0], '\n') == NULL
+	&& (ft_memset(bu, 0, buf_size + 1) == bu)
+	&& ((*r = read(fd, bu, buf_size)) != 0))
+	{
+		if (*r < 0)
+			return (-1);
+		if (!(tmp = ft_strjoin(mem[0], bu)))
+			return (-1);
+		free(mem[0]);
+		mem[0] = tmp;
+	}
+	return (0);
+}
+
 int		get_next_line(int fd, char **line)
 {
-	char			bu[BUFFER_SIZE + 1];
-	char			*tmp;
 	static char		*mem;
 	int				r;
+	int				buf_size;
 
 	r = 1;
-	if (fd < 0 || line == NULL || (ft_memset(bu, 0, BUFFER_SIZE + 1) != bu)
-	|| BUFFER_SIZE < 0)
+	buf_size = BUFFER_SIZE;
+	if (fd < 0 || line == NULL || buf_size < 0)
 		return (-1);
 	if (mem == NULL)
-		if (!(mem = ft_calloc(BUFFER_SIZE + 1, sizeof(char))))
+		if (!(mem = ft_calloc(buf_size + 1, sizeof(char))))
 			return (-1);
-	while (ft_strchr(mem, '\n') == NULL//sortir ce bloc de la fonctin?
-	&& (ft_memset(bu, 0, BUFFER_SIZE + 1) == bu)
-	&& ((r = read(fd, bu, BUFFER_SIZE)) != 0))
-	{
-		if (r < 0)
-			return (-1);
-		if (!(tmp = ft_strjoin(mem, bu)))
-			return (-1);
-		free(mem);
-		mem = tmp;
-	}
+	if (while_gnl(fd, &mem, buf_size, &r) == -1)
+		return (-1);
 	if (r == 0 && check_get_line(line, &mem) == 1)
 	{
 		mem[0] = '\0';

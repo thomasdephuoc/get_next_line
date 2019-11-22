@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:53 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 14:43:56 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:27:32 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		get_next_line(int fd, char **line);
 int		check_get_line(char **line, char **mem);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_calloc(size_t count, size_t size);
+int		while_gnl(int fd, char **mem, int buf_size, int *r);
 
 void	ft_bzero(void *s, size_t n);
 char	*ft_strsub(char *str, char c);
