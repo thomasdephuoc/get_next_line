@@ -1,5 +1,7 @@
-hello
-world
+Hello 
 
-was an empty
-end is near
+Hello
+
+empty line above
+
+Near is really near

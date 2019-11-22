@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 15:15:21 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:06:46 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		get_next_line(int fd, char **line)
 	if (mem == NULL)
 		if (!(mem = ft_calloc(BUFFER_SIZE + 1, sizeof(char))))
 			return (-1);
-	while (ft_strchr(mem, '\n') == NULL
+	while (ft_strchr(mem, '\n') == NULL//sortir ce bloc de la fonctin?
 	&& (ft_memset(bu, 0, BUFFER_SIZE + 1) == bu)
 	&& ((r = read(fd, bu, BUFFER_SIZE)) != 0))
 	{
@@ -93,7 +93,10 @@ int		get_next_line(int fd, char **line)
 		mem = tmp;
 	}
 	if (r == 0 && check_get_line(line, &mem) == 1)
+	{
+		mem[0] = '\0';
 		return (0);
+	}
 	else if (r > 0 && check_get_line(line, &mem) == 1)
 		return (1);
 	return (-1);

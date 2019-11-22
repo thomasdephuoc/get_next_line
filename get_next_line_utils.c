@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:55 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 14:21:18 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 16:17:19 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,33 +52,6 @@ char	*ft_strsub(char *str, char c)
 	return_str[j] = '\0';
 	return (return_str);
 }
-
-/*
-**	Puts s2 after s1 in s1
-
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char *ptr;
-	size_t i;
-
-	i = 0;
-	if (s == NULL)
-		return (NULL);
-	if (ft_strlen(s) < start)
-		return (ft_strdup(""));
-	if (!(ptr = malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (i < len)
-	{
-		ptr[i] = (char)s[start + i];
-		++i;
-	}
-	ptr[i] = '\0';
-	return (ptr);
-}
-
-*/
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
