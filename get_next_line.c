@@ -6,14 +6,14 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 17:27:46 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:36:56 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 /*
-** Dynamically allocates count elements of size size, null-terminates the output
+** Dynamically allocates count elements of size, null-terminates the output
 */
 
 void	*ft_calloc(size_t count, size_t size)
