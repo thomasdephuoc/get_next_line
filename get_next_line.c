@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/22 17:36:56 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/23 18:07:59 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ int		while_gnl(int fd, char **mem, int buf_size, int *r)
 	&& ((*r = read(fd, bu, buf_size)) != 0))
 	{
 		if (*r < 0)
+		{
+			//free(mem[0]); free here?
 			return (-1);
+		}
 		if (!(tmp = ft_strjoin(mem[0], bu)))
 			return (-1);
 		free(mem[0]);
@@ -99,8 +102,11 @@ int		get_next_line(int fd, char **line)
 	if (mem == NULL)
 		if (!(mem = ft_calloc(buf_size + 1, sizeof(char))))
 			return (-1);
-	if (while_gnl(fd, &mem, buf_size, &r) == -1)
+	if (while_gnl(fd, &mem, buf_size, &r) == -1) // leak if we return -1?
+	{
+		//free(mem); => free before returning error?
 		return (-1);
+	}
 	if (r == 0 && check_get_line(line, &mem) == 1)
 	{
 		mem[0] = '\0';
