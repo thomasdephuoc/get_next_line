@@ -6,7 +6,7 @@
 /*   By: tde-phuo <tde-phuo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:38:57 by tde-phuo          #+#    #+#             */
-/*   Updated: 2019/11/23 18:07:59 by tde-phuo         ###   ########.fr       */
+/*   Updated: 2019/11/25 12:29:13 by tde-phuo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,24 +67,25 @@ int		check_get_line(char **line, char **mem)
 	return (1);
 }
 
-int		while_gnl(int fd, char **mem, int buf_size, int *r)
+int		while_gnl(int fd, char **p_mem, int buf_size, int *r)
 {
 	char	bu[buf_size + 1];
 	char	*tmp;
 
-	while (ft_strchr(mem[0], '\n') == NULL
+	while (ft_strchr(p_mem[0], '\n') == NULL
 	&& (ft_memset(bu, 0, buf_size + 1) == bu)
 	&& ((*r = read(fd, bu, buf_size)) != 0))
 	{
 		if (*r < 0)
 		{
-			//free(mem[0]); free here?
+			free(p_mem[0]);
+			*p_mem = 0;
 			return (-1);
 		}
-		if (!(tmp = ft_strjoin(mem[0], bu)))
+		if (!(tmp = ft_strjoin(p_mem[0], bu)))
 			return (-1);
-		free(mem[0]);
-		mem[0] = tmp;
+		free(p_mem[0]);
+		p_mem[0] = tmp;
 	}
 	return (0);
 }
@@ -93,23 +94,20 @@ int		get_next_line(int fd, char **line)
 {
 	static char		*mem;
 	int				r;
-	int				buf_size;
 
 	r = 1;
-	buf_size = BUFFER_SIZE;
-	if (fd < 0 || line == NULL || buf_size < 0)
+	if (fd < 0 || line == NULL || BUFFER_SIZE < 0)
 		return (-1);
 	if (mem == NULL)
-		if (!(mem = ft_calloc(buf_size + 1, sizeof(char))))
+		if (!(mem = ft_calloc(BUFFER_SIZE + 1, sizeof(char))))
 			return (-1);
-	if (while_gnl(fd, &mem, buf_size, &r) == -1) // leak if we return -1?
-	{
-		//free(mem); => free before returning error?
+	if (while_gnl(fd, &mem, BUFFER_SIZE, &r) == -1)
 		return (-1);
-	}
 	if (r == 0 && check_get_line(line, &mem) == 1)
 	{
 		mem[0] = '\0';
+		free(mem);
+		mem = 0;
 		return (0);
 	}
 	else if (r > 0 && check_get_line(line, &mem) == 1)

@@ -1,2 +1,34 @@
-(main) (r:0) Line is: (null)
+Process:         a.out [42167]
+Path:            /Volumes/VOLUME/*/a.out
+Load Address:    0x103ce6000
+Identifier:      a.out
+Version:         ???
+Code Type:       X86-64
+Parent Process:  zsh [34034]
+
+Date/Time:       2019-11-25 12:29:10.628 +0100
+Launch Time:     2019-11-25 12:29:10.253 +0100
+OS Version:      Mac OS X 10.14.5 (18F132)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/leaks
+Analysis Tool Version:  Xcode 10.3 (10G8)
+----
+
+leaks Report Version: 4.0
+Process 42167: 161 nodes malloced for 30 KB
+Process 42167: 0 leaks for 0 total leaked bytes.
+
+fd is: 3
+(main) (r:1) Line is: First line
+--
+(main) (r:1) Line is: 
+--
+(main) (r:0) Line is: Last line
+--
+fd is: 3
+(main) (r:1) Line is: First line - 2nd doc
+--
+(main) (r:1) Line is: 
+--
+(main) (r:0) Line is: Last line - 2nd doc
 --
